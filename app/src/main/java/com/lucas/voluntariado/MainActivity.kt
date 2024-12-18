@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -51,21 +53,51 @@ fun MainScreen() {
 
                 // Imagen
                 Image(
-                    painter = painterResource(id = R.drawable.voluntario), // Nombre de tu imagen
+                    painter = painterResource(id = R.drawable.voluntario),
                     contentDescription = "Icono de voluntariado",
                     modifier = Modifier
                         .size(128.dp)
                         .padding(8.dp)
                 )
+
+                // Lista de tareas
+                TaskList()
             }
         }
     )
 }
 
-@Preview(showBackground = true)
 @Composable
-fun MainScreenPreview() {
-    GestorVoluntariadoTheme {
-        MainScreen()
+fun TaskList() {
+    val tasks = listOf(
+        "Reparto de alimentos" to "Ayuda en el banco de alimentos local.",
+        "Limpieza de playas" to "Recogida de residuos en la playa principal.",
+        "Donación de ropa" to "Entrega de ropa a familias necesitadas.",
+        "Organización de eventos" to "Ayuda en la logística de eventos benéficos.",
+        "Clases de apoyo" to "Apoyo escolar en centros comunitarios."
+    )
+
+    LazyColumn(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        items(tasks) { (title, description) ->
+            TaskItem(title, description)
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+fun TaskItem(title: String, description: String) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(text = title, style = MaterialTheme.typography.titleLarge)
+            Text(text = description, style = MaterialTheme.typography.bodyMedium)
+        }
     }
 }
