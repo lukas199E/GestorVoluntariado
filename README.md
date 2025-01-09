@@ -24,3 +24,14 @@ Una aplicación simple para visualizar y organizar tareas de voluntariado.
    ```bash
    git clone https://github.com/Lukas199E/GestorVoluntariado.git
 
+
+
+## Cambios realizados en la Tarea Práctica 2
+1. Integración de Room para gestionar la persistencia de datos (TareaDao y AppDatabase).
+2. Implementación del ciclo de vida en `MainActivity` para registrar eventos del ciclo de vida de la aplicación.
+3. Configuración y personalización del archivo `AndroidManifest.xml`:
+   - Nombre de la aplicación.
+   - Permisos de Internet y almacenamiento.
+   - Orientación de la pantalla fijada a "vertical".
+4. Uso de dependencias adicionales para Room y compatibilidad con Jetpack Compose.
+
